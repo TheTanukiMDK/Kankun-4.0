@@ -1,0 +1,56 @@
+ESTA ES LA PLANTILLA DEL PROYECTO
+Esta hecha usando Next.JS, es literalmente React pero con mas beneficios, entonces sus codigos no deberian de tener ningun problema
+
+Tenemos estos estandares:
+- Estructura: El proyecto esta dividido en una carpeta app donde estan todas las paginas,
+assets para guardar imagenes u otras cosas,
+components para guardar los componentes que necesiten que no esten descargando de shadcn (Si estoy haciendo el login y tengo que hacer un componente muy especifico lo tengo que guardar en components/login)
+lib para guardar utils (probablemente no tengan que tocar esta)
+store para guardar estados de zustand (mas abajito explico q es)
+
+- Calidad del codigo: El proyecto tiene configurado rutas lindas
+Si antes importabas los componentes asi: "import Componente from '../../components/componente'"
+Ahora puedes importarlos asi: "import Componente from '@/components/componente'"
+Cuando usas el @ es como si estuvieras buscando desde la carpeta src, osease que puedes acceder directamente a la carpeta app, components, assets, etc
+Sin tener que retroceder
+Por favor sigan esta practica
+
+- Rutas: Todo archivo de pagina estara dentro de la carpeta app, hay mas info sobre porque en el archivo leanme de esa carpeta.
+
+- Componentes: Vamos a usar ShadCN para descargar componentes, todo ya esta configurado, lo unico que haran sera descargar los componentes que necesiten
+(Osease, usar el comando de "npx shadcn@latest add button" para descargar un boton)
+
+- Colores: Como vamos a usar shadcn los colores ya estan configurados, pero entiendo que en algunas partes vamos a necesitar modificar esos componentes o crear nuevos
+En ese caso podemos usar las variables de colores ya definidas, estan en assets/globals.css (Hay un comentario arriba de ellas)
+Ademas, ya hay variables para redondeado (radius) para mantener un redondeado constante en la app y no se vean disparejos.
+Los colores ya estan configurados dentro de tailwind, osease que si en el css ven un color "background" para el fondo de la pagina, pueden usarlo en tailwind como "bg-background"
+Por favor, usen solo esos colores y ni uno mas, esto para que, en caso de que tengamos que cambiar un color x algo, solamente cambiemos el css y afecte a todo
+(Por si no sabian, pueden usar className con los componentes de shadcn para modificarlos un poco y aun asi tendran todas las funcionalidades chidas, aunque porfavor haganlo en casos MUY especificos)
+
+- Iconos: Para los iconos usaremos la libreria de lucide icons, TODOS usen estos iconos, pueden ver toda la lista aqui:
+https://lucide.dev/icons/ (Buscan un icono y la misma pagina les da ejemplos de como importarlo en React)
+
+- Modo oscuro: La pagina tiene soporte para modo oscuro y claro dependiendo de lo q quiera el usuario, ya esta definido hasta en los temas, pueden checar este link para ver como añadirlo a sus modulos
+https://ui.shadcn.com/docs/dark-mode/next (SOLO HAGAN EL PASO 4)
+
+- Control de estado: Usaremos Zustand para controlar el estado:
+Supongamos que tenemos que saber en que pagina esta actualmente el usuario para que en la sidebar se muestre el titulo de esa pagina
+El problema esta cuando son dos componentes diferentes y no hay forma de unirlos a menos que cambiemos todo el formato
+Usando zustand podemos mantener un tipo de variables globales de la pagina que se comparten entre componentes aunque no esten unidos
+BUsquenle en google, esta demasiado chido
+
+- Variables en el enlace: Usaremos nuqs para las variables en el enlace
+Cuando queramos crear la lista de los eventos para el usuario no vamos a crear una pagina especifica por cada evento
+Creamos una pagina q jala todos los datos y los muestra
+Sin embargo, cuando recargamos la pagina los datos se pueden perder
+Usamos nuqs para que se guarden variables en la misma url
+Asi cuando el usuario recargue o comparta el link siempre se mostraran los mismos datos
+Tambn busquen en google o preguntenle a chat como remplazarla por useState cuando la necesiten
+(OJO QUE SOLO DEBERIA USARSE PARA GUARDAR DATOS PEQUES COMO UN ID Y LUEGO USARLA PARA HACER UN FETCH, NO PARA GUARDAR OBJETOS ENTEROS)
+
+- Animaciones: Usamos motion
+Para darle mas estilo a la app, les ruego que PORFIS usen el paquete de motion para animar varios componentes
+Esto ya depende de su criterio y que tan viva quieran su pagina, pero esta el paquete ahi para lo que necesiten
+Pueden buscar en la pagina de motion para que copien y peguen las animaciones ya echas o hagan las suyas.
+
+
