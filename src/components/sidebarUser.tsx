@@ -12,7 +12,7 @@ const Sidebar = () => {
             <Calendar size={20} />
           </Link>
 
-          <Link href="/dashboard/user" className="flex items-center space-x-2 p-3 bg-gray-200 text-gray-700 rounded-full shadow-md hover:bg-gray-300 transition">
+          <Link href="/dashboard/user/reservations" className="flex items-center space-x-2 p-3 bg-gray-200 text-gray-700 rounded-full shadow-md hover:bg-gray-300 transition">
             <ClipboardList size={20} />
           </Link>
 
@@ -24,7 +24,7 @@ const Sidebar = () => {
 
       <div className="bg-white shadow-lg rounded-full p-3 flex flex-col space-y-4">
         <div className="space-y-4">
-          <Link href="/dashboard/user" className="flex items-center space-x-2 p-3 bg-gray-200 text-gray-700 rounded-full shadow-md hover:bg-gray-300 transition">
+          <Link href="/dashboard/user/settings" className="flex items-center space-x-2 p-3 bg-gray-200 text-gray-700 rounded-full shadow-md hover:bg-gray-300 transition">
             <Settings size={20} />
           </Link>
 
