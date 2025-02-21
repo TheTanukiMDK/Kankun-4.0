@@ -1,0 +1,26 @@
+gracias a next.js no hace falta crear nada de archivos de routing o instalar react-router o noseque
+next crea automaticamente las rutas dependiendo de las carpetas (si crean una carpeta llamada "login", la pagina cargara cuando entres a "localhost:PUERTO/login")
+Ademas, si van creando subcarpetas las rutas se ajustan (si crean una carpeta llamada "verify" dentro de "login" la ruta seria "localhost:PUERTO/login/verify")
+Como esta es la carpeta inicial, el archivo page.tsx de aqui es la Landing Page
+LOS DE LANDING PAGE, PEGUEN SU CODIGO EN ESTE ARCHIVO PAGE
+
+Los demas, creen las carpetas que necesiten para sus rutas, si pueden d preferencia todo en ingles pa vernos bn profesionales
+
+
+Van a ver muchos archivos llamados layout y page, sus diferencias son:
+page.tsx : Es el archivo de react de toda la vida, aqui hacen todo su codigo normal sin problema
+layout.tsx: Layout sirve para usar los mismos componentes en las paginas y solo cambiar ciertas partes:
+Pongan de ejemplo youtube, cuando estas en videos y cambias a uno la pagina no vuelve a cambiar entera, solamente vuelve a cargar la parte del video, recomendados etc, pero la barra de busqueda y la sidebar siguen iguales
+en layout iria la parte de la barra de busqueda y sidebar, donde luego lo demas de la pagina cargaria desde page, asi evitan que cada pestaña del dashboard recargue todo de nuevo
+
+cuando se llama a la pagina se muestra primero layout y luego se muestra page dentro de layout
+tener ambos archivos es OBLIGATORIO, aunque layout no tenga algo relevante, es necesario que ambos esten.
+
+Un formato sencillo si su pagina no es tan dependiente de layout seria que, en layout solamente creen un export default root donde solo tenga
+return (<div>{children}</div>)
+
+para ya empezar a editar sin problema su archivo page.tsx
+
+Donde pongan children es donde se mostrara page dentro de layout, asi que ajustenlo bien
+
+El layout se aplica en las rutas normalitas y cuando haces subrutas (como explique arribita)

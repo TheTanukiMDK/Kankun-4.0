@@ -1,13 +1,14 @@
+"use client"
 import React from 'react'
-import { GiPalmTree } from "react-icons/gi";
-
+//import { GiPalmTree } from "react-icons/gi";
+import { TreePalm } from 'lucide-react';
 function Login() {
     return (
         <>
             <header className="w-full fixed top-0 left-0 bg-white flex justify-between p-4 border border-[#B82132]">
                 <h1 className="text-red-600 font-bold text-[30px] ml-10">Iniciar sesión</h1>
                 <div className="flex items-center gap-2 mr-10">
-                    <GiPalmTree className="text-red-600 text-[30px]" size="3rem" />
+                    <TreePalm className="text-red-600 text-[30px]" size="3rem" />
                     <span className="text-red-600 font-bold text-[30px]">Kankun 4.0</span>
                 </div>
             </header>
@@ -33,9 +34,9 @@ function Login() {
                     </form>
                     <div className="mt-4 text-center text-sm text-gray-700 p-4">
                         <p >
-                            ¿No tienes una cuenta? <a href="/Registro" className="text-red-600 font-bold">Regístrate</a>
+                            ¿No tienes una cuenta? <a href="/register" className="text-red-600 font-bold">Regístrate</a>
                             <br></br>
-                            <a  className="text-red-400 font-bold" href='/RecuperarContra'>Olvide mi contraseña</a>
+                            <a  className="text-red-400 font-bold" href='/forgetPassword'>Olvide mi contraseña</a>
                         </p>
                     </div>
 
