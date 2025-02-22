@@ -1,39 +1,96 @@
 "use client";
-
-import { Calendar, ClipboardList, Bell, Settings, LogOut } from "lucide-react"; 
+import { ReactNode, useEffect, useState } from "react";
+import {
+  LucideIcon,
+  Calendar,
+  ClipboardList,
+  Bell,
+  Settings,
+  LogOut,
+} from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   return (
-    <aside className="fixed left-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-6">
-      <div className="bg-white shadow-lg rounded-full p-3 flex flex-col space-y-4">
-        <div className="space-y-4">
-          <Link href="/dashboard/user" className="flex items-center space-x-2 p-3 bg-gray-200 text-gray-700 rounded-full shadow-md hover:bg-gray-300 transition">
-            <Calendar size={20} />
-          </Link>
+    <div className="h-full flex flex-col items-center justify-center space-y-10 m-4">
+      <Container>
+        <SideButton Icon={Calendar} href="/dashboard/user" tooltip="Eventos" />
+        <SideButton
+          Icon={ClipboardList}
+          href="/dashboard/user/reservations"
+          tooltip="Reservaciones"
+        />
+        <SideButton
+          Icon={Bell}
+          href="/dashboard/user/notifications"
+          tooltip="Notificaciones"
+        />
+      </Container>
 
-          <Link href="/dashboard/user/reservations" className="flex items-center space-x-2 p-3 bg-gray-200 text-gray-700 rounded-full shadow-md hover:bg-gray-300 transition">
-            <ClipboardList size={20} />
-          </Link>
+      <Container>
+        <SideButton
+          Icon={Settings}
+          href="/dashboard/user/settings"
+          tooltip="Ajustes"
+        />
+        <SideButton Icon={LogOut} href="/login" tooltip="Cerrar sesión" />
+      </Container>
+    </div>
+  );
+};
 
-          <Link href="/dashboard/user" className="flex items-center space-x-2 p-3 bg-gray-200 text-gray-700 rounded-full shadow-md hover:bg-gray-300 transition">
-            <Bell size={20} />
-          </Link>
-        </div>
-      </div>
+const Container = ({ children }: { children: ReactNode }) => {
+  return (
+    <div className="bg-white shadow-lg rounded-full p-3 flex flex-col space-y-4">
+      {children}
+    </div>
+  );
+};
 
-      <div className="bg-white shadow-lg rounded-full p-3 flex flex-col space-y-4">
-        <div className="space-y-4">
-          <Link href="/dashboard/user/settings" className="flex items-center space-x-2 p-3 bg-gray-200 text-gray-700 rounded-full shadow-md hover:bg-gray-300 transition">
-            <Settings size={20} />
-          </Link>
+const SideButton = ({
+  Icon,
+  href,
+  tooltip,
+}: {
+  Icon: LucideIcon;
+  href: string;
+  tooltip: string;
+}) => {
+  const [btVariant, setVariant] = useState<string>("primary");
+  const currPath = usePathname();
 
-          <Link href="/login" className="flex items-center space-x-2 p-3 bg-gray-200 text-gray-700 rounded-full shadow-md hover:bg-red-500 transition">
-            <LogOut size={20} />
-          </Link>
-        </div>
-      </div>
-    </aside>
+  useEffect(() => {
+    setVariant(currPath == href ? "" : "ghost");
+    console.log(btVariant);
+  }, [currPath, href]);
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          <Button
+            className="rounded-full w-14 h-14"
+            variant={btVariant}
+            size="icon"
+            asChild
+          >
+            <Link href={href}>
+              <Icon size={32} />
+            </Link>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{tooltip}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 
