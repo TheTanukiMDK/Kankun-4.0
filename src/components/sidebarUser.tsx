@@ -1,97 +1,69 @@
-"use client";
-import { ReactNode, useEffect, useState } from "react";
-import {
-  LucideIcon,
-  Calendar,
-  ClipboardList,
-  Bell,
-  Settings,
-  LogOut,
-} from "lucide-react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+"use client"
+
+import { BellRing, BookOpenCheck, CalendarFold, House, LogOut, Settings, UsersRound, Clipboard } from 'lucide-react';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import Link from 'next/link';
+
 
 const Sidebar = () => {
   return (
-    <div className="h-full flex flex-col items-center justify-center space-y-10 m-4">
-      <Container>
-        <SideButton Icon={Calendar} href="/dashboard/user" tooltip="Eventos" />
-        <SideButton
-          Icon={ClipboardList}
-          href="/dashboard/user/reservations"
-          tooltip="Reservaciones"
-        />
-        <SideButton
-          Icon={Bell}
-          href="/dashboard/user/notifications"
-          tooltip="Notificaciones"
-        />
-      </Container>
 
-      <Container>
-        <SideButton
-          Icon={Settings}
-          href="/dashboard/user/settings"
-          tooltip="Ajustes"
-        />
-        <SideButton Icon={LogOut} href="/login" tooltip="Cerrar sesión" />
-      </Container>
-    </div>
-  );
-};
+    <aside className="flex">
+    <nav className="h-screen flex flex-col ml-8 justify-evenly ">
+        {/* Este es el bloque principal de navegación */}
+        <ul className=' bg-white shadow-xl border-spacing-y-9 rounded-full p-4 backdrop-blur-xl'>
+            
+            <li className='relative flex items-center justify-center h-16 w-16 cursor-pointer group mb-5'>
+              <Link href="/dashboard/user">
+              <Clipboard size={32}
+                className="relative z-10 hover:text-[#ffffff]"
+                />
+              </Link>
+                <div className="absolute inset-0 bg-red-400/90 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+            </li>
+            <li className='relative flex items-center justify-center h-16 w-16 cursor-pointer group mb-5'>
+              <Link href="/dashboard/user/reservations">
+              <CalendarFold size={32}
+                className="relative z-10 hover:text-[#ffffff]"
+                />
+              </Link>
+            
+                <div className="absolute inset-0 bg-red-400/90 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+            </li>
 
-const Container = ({ children }: { children: ReactNode }) => {
-  return (
-    <div className="bg-white shadow-lg rounded-full p-3 flex flex-col space-y-4">
-      {children}
-    </div>
-  );
-};
+        </ul>
 
-const SideButton = ({
-  Icon,
-  href,
-  tooltip,
-}: {
-  Icon: LucideIcon;
-  href: string;
-  tooltip: string;
-}) => {
-  const [btVariant, setVariant] = useState<string>("primary");
-  const currPath = usePathname();
-
-  useEffect(() => {
-    setVariant(currPath == href ? "" : "ghost");
-    console.log(btVariant);
-  }, [currPath, href]);
-  return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger>
-          <Button
-            className="rounded-full w-14 h-14"
-            variant={btVariant}
-            size="icon"
-            asChild
-          >
-            <Link href={href}>
-              <Icon size={32} />
-            </Link>
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{tooltip}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  );
-};
-
+        {/* este es el bloque del cierre de sesión y del perfil del usuario-Admin*/}
+        <ul className='  bg-white shadow-xl mt-20 border-spacing-y-9 rounded-full p-4 backdrop-blur-xl'>
+        <li className='relative flex items-center justify-center h-16 w-16 cursor-pointer group '>
+                <Settings  size={32}
+                className="relative z-10 hover:text-[#ffffff]"
+                />
+                <div className="absolute inset-0 bg-red-400/90 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+            </li>
+            <li className='relative flex items-center justify-center h-16 w-16 cursor-pointer group mb-5'>
+                <Link href="/login">
+                 <LogOut size={32}
+                className="relative z-10 hover:text-[#ffffff]"/>
+                </Link>
+               
+                <div className="absolute inset-0 bg-red-400/90 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+            </li>
+            <li className='relative flex items-center justify-center h-16 w-16 cursor-pointer group'>
+                <Avatar>
+                    <AvatarImage
+                    src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?cs=srgb&dl=pexels-danxavier-1239291.jpg&fm=jpg" 
+                    className="rounded-full object-cover  " 
+                    alt="Perfil"
+                    /> 
+                    <AvatarFallback className="bg-gray-200 text-gray-700"> 
+                    US
+                    </AvatarFallback>
+                </Avatar>
+            </li>
+        </ul>
+    </nav>
+</aside>
+)
+}
 export default Sidebar;

@@ -17,7 +17,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <section className="
         relative w-full scrollbar-hide ">
           <HeaderAdmin/>
-          <div className="flex h-[84vh] w-full mt-10 overflow-auto scrollbar-hide
+          <div className=" h-[84vh] w-full mt-10 overflow-auto scrollbar-hide
                 lg:w-[calc(100%-330px)]
                 sm:w-[calc(100%-180px)]
                 md:w-[calc(100%-300px)]    
