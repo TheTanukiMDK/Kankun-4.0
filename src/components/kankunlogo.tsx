@@ -1,6 +1,6 @@
 import { TreePalm } from "lucide-react";
 import { cn } from "@/lib/utils";
-const Logo = ({ className }: { className: string }) => {
+const Logo = ({ className }: { className?: string }) => {
   return (
     <div className={cn("flex flex-row items-center gap-2 h-32", className)}>
       <TreePalm size={32} />
