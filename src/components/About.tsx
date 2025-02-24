@@ -2,7 +2,17 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import image from "@/components/japon.jpg"
+
+import image from "@/assets/images/japon.jpg"
+import image1 from "@/assets/images/fiesta.jpg"
+import image2 from "@/assets/images/fiesta2.jpg"
+import image3 from "@/assets/images/fiesta3.jpg"
+import image4 from "@/assets/images/fiesta4.jpg"
+import image5 from "@/assets/images/piscina1.jpg"
+import image6 from "@/assets/images/playa1.jpg"
+import image7 from "@/assets/images/playa2.jpg"
+import image8 from "@/assets/images/playa3.jpg"
+
 
 const About = () => {
     const ref = useRef(null)
@@ -24,6 +34,24 @@ const About = () => {
         visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
     }
 
+    const features = [
+        {
+            title: "Eventos Exclusivos",
+            description: "Accede a eventos únicos y experiencias VIP",
+            image: image6.src,
+        },
+        {
+            title: "Comunidad Vibrante",
+            description: "Únete a una comunidad apasionada por la música y el entretenimiento",
+            image: image8.src,
+        },
+        {
+            title: "Momentos Inolvidables",
+            description: "Crea recuerdos que durarán toda la vida",
+            image: image4.src,
+        },
+    ]
+
     return (
         <section id="about" className="py-20 relative overflow-hidden bg-[#F6DED8]/30">
             <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,26 +65,13 @@ const About = () => {
                     </motion.div>
 
                     <div className="grid md:grid-cols-3 gap-8">
-                        {[
-                            {
-                                title: "Eventos Exclusivos",
-                                description: "Accede a eventos únicos y experiencias VIP",
-                            },
-                            {
-                                title: "Comunidad Vibrante",
-                                description: "Únete a una comunidad apasionada por la música y el entretenimiento",
-                            },
-                            {
-                                title: "Momentos Inolvidables",
-                                description: "Crea recuerdos que durarán toda la vida",
-                            },
-                        ].map((feature, index) => (
+                        {features.map((feature, index) => (
                             <motion.div key={index} variants={itemVariants}>
                                 <Card className="overflow-hidden h-full flex flex-col">
                                     <div className="h-48 relative overflow-hidden">
                                         <img
-                                            src={image.src || "/placeholder.svg"}
-                                            alt="Vista de Monte Fuji"
+                                            src={feature.image} // ← Ahora cada tarjeta tiene su imagen
+                                            alt={feature.title}
                                             className="w-full h-full object-cover"
                                             loading="lazy"
                                         />
@@ -78,4 +93,3 @@ const About = () => {
 }
 
 export default About
-

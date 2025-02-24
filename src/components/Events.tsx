@@ -3,7 +3,15 @@ import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import image from "@/components/japon.jpg"
+import image from "@/assets/images/japon.jpg"
+import image1 from "@/assets/images/fiesta.jpg"
+import image2 from "@/assets/images/fiesta2.jpg"
+import image3 from "@/assets/images/fiesta3.jpg"
+import image4 from "@/assets/images/fiesta4.jpg"
+import image5 from "@/assets/images/piscina1.jpg"
+import image6 from "@/assets/images/playa1.jpg"
+import image7 from "@/assets/images/playa2.jpg"
+import image8 from "@/assets/images/playa3.jpg"
 
 const Events = () => {
     const ref = useRef(null)
@@ -29,18 +37,22 @@ const Events = () => {
         {
             title: "Festivales de Música",
             description: "Los mejores festivales",
+            image: image4.src,
         },
         {
             title: "Conciertos Exclusivos",
             description: "Experiencias musicales únicas",
+            image: image1.src,
         },
         {
             title: "Eventos Culturales",
             description: "Celebra la cultura y el arte",
+            image: image2.src,
         },
         {
             title: "Fiestas Temáticas",
             description: "Diversión garantizada con temáticas únicas",
+            image: image3.src,
         },
     ]
 
@@ -69,8 +81,8 @@ const Events = () => {
                                         <Card className="overflow-hidden">
                                             <div className="h-64 relative overflow-hidden">
                                                 <img
-                                                    src={image.src || "/placeholder.svg"}
-                                                    alt="Vista de Monte Fuji"
+                                                    src={event.image} // ← Usa la imagen de cada evento
+                                                    alt={event.title}
                                                     className="w-full h-full object-cover"
                                                     loading="lazy"
                                                 />
@@ -94,4 +106,3 @@ const Events = () => {
 }
 
 export default Events
-

@@ -2,7 +2,8 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import image from "@/components/japon.jpg"
+import image from "@/assets/images/japon.jpg"
+import image2 from "@/assets/images/Japoncat.jpg"
 
 const Hero = () => {
     const ref = useRef(null)
@@ -29,7 +30,7 @@ const Hero = () => {
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
-                    backgroundImage: `url(${image.src})`,
+                    backgroundImage: `url(${image2.src})`,
                 }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent" />
