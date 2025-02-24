@@ -26,6 +26,14 @@
     --ring: 0 100% 63%;
     --radius: 0.5rem;
   }
+  .degBars{
+    --custom-gradient-color: linear-gradient(
+      to right,
+      hsl(79, 28%, 86%),
+      hsl(359, 57%, 44%)
+    );
+    --bg-primary: var(--custom-gradient-color);
+  } 
 
   .dark {
     --background: 0 10% 10%;
@@ -56,6 +64,17 @@
     @apply border-border;
   }
 
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ---break---*/
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
   body {
     @apply bg-background text-foreground;
   }
