@@ -144,7 +144,7 @@ function Registro() {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400 " 
+                                className="text-black w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400 " 
                                 placeholder="Nombre"
                             />
                         </div>
@@ -154,7 +154,7 @@ function Registro() {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400" 
+                                className="text-black w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400" 
                                 placeholder="Correo"
                             />
                         </div>
@@ -165,7 +165,7 @@ function Registro() {
                                 name="password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400" 
+                                className="text-black w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400" 
                                 placeholder="Contraseña"
                             />
                         </div>
@@ -176,7 +176,7 @@ function Registro() {
                                 name="password_confirmation"
                                 value={formData.password_confirmation}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400" 
+                                className="text-black w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400" 
                                 placeholder="Confirmar contraseña"
                             />
                         </div>
@@ -215,7 +215,7 @@ function Registro() {
                         <div className="mt-4">
                             <input
                                 type="text"
-                                className="w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400"
+                                className="text-black w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400"
                                 placeholder="Respuesta de seguridad"
                                 value={securityAnswer}
                                 onChange={(e) => setSecurityAnswer(e.target.value)}

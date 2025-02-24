@@ -100,7 +100,7 @@ function Login() {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400 "
+                                className=" text-black w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400 "
                                 placeholder="Correo"
                                 required
                             />
@@ -110,7 +110,7 @@ function Login() {
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400"
+                                className="text-black w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400"
                                 placeholder="Contraseña"
                                 required
                             />
@@ -140,7 +140,7 @@ function Login() {
                                 type="text"
                                 value={securityAnswer}
                                 onChange={(e) => setSecurityAnswer(e.target.value)}
-                                className="w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400"
+                                className="text-black w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400"
                                 placeholder="Ingresa tu respuesta"
                                 required
                             />

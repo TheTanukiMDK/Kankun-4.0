@@ -2,6 +2,7 @@
 
 import { BellRing, BookOpenCheck, CalendarFold, House, LogOut, Settings, UsersRound } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import Link from 'next/link';
 
 const SidebarAdmin = () => {
     return(
@@ -54,8 +55,11 @@ const SidebarAdmin = () => {
                 {/* este es el bloque del cierre de sesión y del perfil del usuario-Admin*/}
                 <ul className='  bg-white shadow-xl mt-20 border-spacing-y-9 rounded-full p-4 backdrop-blur-xl'>
                     <li className='relative flex items-center justify-center h-16 w-16 cursor-pointer group mb-5'>
-                        <LogOut size={32}
+                        <Link href="/login">
+                         <LogOut size={32}
                         className="relative z-10 hover:text-[#ffffff]"/>
+                        </Link>
+                       
                         <div className="absolute inset-0 bg-red-400/90 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                     </li>
                     <li className='relative flex items-center justify-center h-16 w-16 cursor-pointer group'>

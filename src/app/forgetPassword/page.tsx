@@ -19,7 +19,7 @@ function RecuperarContra() {
                                 <div className="mb-5">
                                     <input
                                         type="email"
-                                        className="w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400 "
+                                        className="text-black w-full p-2 border border-black/40 rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-red-400 "
                                         placeholder="Correo"
                                     />
                                 </div>
