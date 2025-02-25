@@ -20,7 +20,8 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     <html lang="es">
       <body>
         <NuqsAdapter>
-          <ThemeProvider attribute="class" defaultTheme="system">
+          <ThemeProvider attribute="class" defaultTheme="Ligth" enableSystem
+            disableTransitionOnChange>
             {children}
           </ThemeProvider>
         </NuqsAdapter>
