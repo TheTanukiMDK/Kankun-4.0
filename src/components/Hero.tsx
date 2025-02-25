@@ -3,7 +3,6 @@ import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import image2 from "@/assets/images/Japoncat.jpg"
-import NextLink from 'next/link' // Importa el componente Link de next/link
 
 const Hero = () => {
     const ref = useRef(null)
@@ -49,18 +48,12 @@ const Hero = () => {
                         Descubre un mundo lleno de eventos inolvidables, la mejor música y experiencias únicas
                     </motion.p>
                     <motion.div variants={itemVariants} className="flex flex-wrap gap-4 justify-center">
-                        <NextLink href="#events" passHref>
-                            <Button size="lg" className="text-lg" variant="default">
-                                Ver eventos
-                            </Button>
-                        </NextLink>
-
-                        <NextLink href="/login" passHref>
-                            <Button size="lg" className="text-lg border-white text-grey/10 hover:bg-white/10" variant="outline">
-                                Ver más
-                            </Button>
-                        </NextLink>
-                        
+                        <Button size="lg" className="text-lg" variant="default">
+                            Ver eventos
+                        </Button>
+                        <Button size="lg" className="text-lg border-white text-grey/10 hover:bg-white/10" variant="outline">
+                            Saber más
+                        </Button>
                     </motion.div>
                 </div>
             </motion.div>

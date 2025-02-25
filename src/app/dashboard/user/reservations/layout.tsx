@@ -1,8 +1,7 @@
-import { ReactNode } from "react";
-
-// Configuren segun sus necesidades
-const Layout = ({ children }: { children: ReactNode }) => {
-  return <div>{children}</div>;
-};
-
-export default Layout;
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <div className="flex flex-1 px-8">{children}</div>;
+}
