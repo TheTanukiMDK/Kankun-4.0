@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+
 "use client"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 import { ChartConfig, ChartContainer } from "@/components/ui/chart"
@@ -6,6 +7,9 @@ import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { DollarSign, PanelTop } from "lucide-react"
 import { AsistanceCard } from "@/components/asistanceCard"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useEffect } from "react"
+import { useTitle } from "@/components/titleContext"
+
 const chartData = [
   { month: "January", Ventas: 2000},
   { month: "February", Ventas: 4500},
@@ -24,11 +28,17 @@ const chartConfig = {
   Ventas: {
     label: "Ventas del mes: ",
   },
+
+
 } satisfies ChartConfig
+
 const Root = () => {
+  const { setTitle } = useTitle();
+    useEffect(() => {
+      setTitle('Dashboard');
+    }, [setTitle]);
   return (
     <div className="pl-12 pt-8 grid grid-cols-5 grid-rows-4 gap-10 p-4">
-    {/* Chart de Resumen de Ventas (2 filas, 3 columnas) */}
     <div className="col-span-2 row-span-2">
       <Card className="bg-transparent border-none shadow-none h-full">
         <CardHeader>
@@ -60,8 +70,6 @@ const Root = () => {
         </CardContent>
       </Card>
     </div>
-  
-    {/* Cuadros pequeños (Ventas Semanales e Ingresos Totales) */}
     <div className="col-span-1 row-span-2 flex flex-col gap-4">
       <div className="bg-[#D9D9D9] rounded-lg p-4 relative h-[48%]">
         <div className="absolute top-2 right-2">
@@ -82,8 +90,6 @@ const Root = () => {
         </div>
       </div>
     </div>
-  
-    {/* Cuadro de Asistencias Totales */}
     <div className="col-span-2 row-span-4">
     <h1 className="text-2xl font-semibold mb-4 text-[#901D1D]">Mejores eventos</h1>
         <div className="bg-white rounded-lg p-4 shadow-md">
@@ -129,13 +135,9 @@ const Root = () => {
           </div>
         </div>
     </div>
-
-     {/* Chart de Asistencias (2 filas, 3 columnas) */}
       <div className="col-span-2 row-span-2 mt-[1vw]">
         <AsistanceCard />
       </div>
-  
-    {/* Cuadro de Mejores Eventos (4 filas, 1 columna) */}
     <div className="col-span-1 row-span-4">
       <div className="h-full flex flex-col gap-4">
       <div className="bg-[#ffffff] rounded-lg p-4 shadow-md h-full">
@@ -149,5 +151,4 @@ const Root = () => {
   </div>
   );
 };
-
 export default Root;
