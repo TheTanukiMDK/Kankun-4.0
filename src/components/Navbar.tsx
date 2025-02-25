@@ -11,11 +11,11 @@ const Navbar = () => {
             <Logo />
           </Link>
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-foreground hover:text-primary transition-colors">
-              Inicio
-            </Link>
             <Link href="#about" className="text-foreground hover:text-primary transition-colors">
               Nosotros
+            </Link>
+            <Link href="#why" className="text-foreground hover:text-primary transition-colors">
+              Descubre
             </Link>
             <Link href="#events" className="text-foreground hover:text-primary transition-colors">
               Eventos

@@ -4,6 +4,7 @@ import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Events from '@/components/Events'
 import Footer from '@/components/Footer'
+import WhyChooseHero from '@/components/Why_choose_hero'
 
 const Landingpage = () => {
     return (
@@ -12,6 +13,7 @@ const Landingpage = () => {
             <main>
                 <Hero />
                 <About />
+                <WhyChooseHero/>
                 <Events />
             </main>
             <Footer />
