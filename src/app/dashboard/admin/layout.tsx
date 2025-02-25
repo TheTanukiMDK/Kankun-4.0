@@ -1,4 +1,3 @@
-
 import { ReactNode } from "react";
 import SidebarAdmin from "@/components/sidebarAdmin";
 import HeaderAdmin from "@/components/headerAdmin";
