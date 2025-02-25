@@ -1,5 +1,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const reservas = [
   { id: 1, nombre: "Fiesta 1", estado: "Pendiente", fecha: "2025-02-25" },
@@ -22,6 +24,16 @@ const getEstadoColor = (estado: string) => {
 };
 
 export default function GestionReservas() {
+  const router = useRouter();
+  
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role'); // Suponiendo que el rol del usuario también se almacena en el localStorage
+
+    if (!token) {
+      router.push('/login');
+    } 
+  }, [router]);
   return (
     <main className="p-10 bg-gray-100">
       <h1 className="text-2xl font-bold text-red-700">Gestión de Reservas</h1>

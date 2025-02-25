@@ -3,9 +3,16 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { TreePalm } from 'lucide-react';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 function Login() {
     const router = useRouter();
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          router.push('/dashboard/user'); // Redirigir a la página de usuario autenticado
+        }
+      }, [router]);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [securityAnswer, setSecurityAnswer] = useState('');
@@ -81,6 +88,8 @@ function Login() {
             setError(err.message);
         }
     };
+
+
 
     return (
         <>

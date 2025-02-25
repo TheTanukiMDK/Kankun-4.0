@@ -5,6 +5,8 @@ import { Avatar } from "@/components/ui/avatar";
 import { useState } from "react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Bell, Settings, LogOut, User } from "lucide-react";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function UserProfile() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,6 +32,16 @@ export default function UserProfile() {
   const handleChange = (event, field) => {
     setFormData({ ...formData, [field]: event.target.value });
   };
+  const router = useRouter();
+  
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role'); // Suponiendo que el rol del usuario también se almacena en el localStorage
+
+    if (!token) {
+      router.push('/login');
+    }
+  }, [router]);
   return (
     <div className="flex h-screen">
      

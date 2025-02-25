@@ -4,8 +4,18 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { MapPin, Users } from "lucide-react";
 import image2 from "@/assets/images/fiesta2.jpg"
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function EventCard() {
+    const router = useRouter();
+  
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        router.push('/login');
+      }
+    }, [router]);
   return (
     <div className="max-w-7xl mx-auto p-2">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

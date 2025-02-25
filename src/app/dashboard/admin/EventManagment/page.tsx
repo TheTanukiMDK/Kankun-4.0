@@ -1,5 +1,6 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
@@ -13,6 +14,7 @@ export default function EventManager() {
   const [view, setView] = useState("event"); // "event", "activities" o "edit"
   const [cardSize, setCardSize] = useState("w-2/3"); // Permite ajustar el tamaño de la card
   const [image, setImage] = useState(null);
+  const router = useRouter();
 
   const events = [
     { id: 1, name: "Fiesta 1", date: "12/2/2024", location: "Salon Centro" },
@@ -26,6 +28,15 @@ export default function EventManager() {
       setImage(URL.createObjectURL(file));
     }
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role'); // Suponiendo que el rol del usuario también se almacena en el localStorage
+
+    if (!token) {
+      router.push('/login');
+    } 
+  }, [router]);
 
   return (
     <div className="flex gap-6 p-6">

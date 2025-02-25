@@ -1,6 +1,16 @@
+"use client"
 import ReservationsCard from "@/components/ReservationsCard";
-
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 const Root = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.push('/login');
+    }
+  }, [router]);
     return (
       <div>
         {/*<main className="ml-[100px] w-[calc(100%-100px)] flex flex-col items-center justify-center min-h-screen p-6">

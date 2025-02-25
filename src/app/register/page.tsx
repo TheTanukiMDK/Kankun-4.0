@@ -20,6 +20,12 @@ function Registro() {
     const [securityAnswer, setSecurityAnswer] = useState('');
 
     const router = useRouter();
+        useEffect(() => {
+            const token = localStorage.getItem('token');
+            if (token) {
+              router.push('/dashboard/user'); // Redirigir a la página de usuario autenticado
+            }
+          }, [router]);
 
     useEffect(() => {
         const fetchSecurityQuestions = async () => {

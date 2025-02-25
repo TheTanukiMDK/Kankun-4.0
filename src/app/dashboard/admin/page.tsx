@@ -6,6 +6,8 @@ import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { DollarSign, PanelTop } from "lucide-react"
 import { AsistanceCard } from "@/components/asistanceCard"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 const chartData = [
   { month: "January", Ventas: 2000},
   { month: "February", Ventas: 4500},
@@ -26,6 +28,16 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 const Root = () => {
+  const router = useRouter();
+  
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role'); // Suponiendo que el rol del usuario también se almacena en el localStorage
+
+    if (!token) {
+      router.push('/login');
+    }
+  }, [router]);
   return (
     <div className="pl-12 pt-8 grid grid-cols-5 grid-rows-4 gap-10 p-4">
     {/* Chart de Resumen de Ventas (2 filas, 3 columnas) */}

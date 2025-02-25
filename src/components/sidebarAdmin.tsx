@@ -3,8 +3,18 @@
 import { BellRing, BookOpenCheck, CalendarFold, House, LogOut, Settings, UsersRound } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const SidebarAdmin = () => {
+      const router = useRouter();
+    
+      const handleLogout = () => {
+        // Elimina el token de inicio de sesión (puede estar en localStorage, cookies, etc.)
+        localStorage.removeItem('token'); // Ejemplo usando localStorage
+        // Redirige al usuario a la página de login
+        router.push('/');
+      };
+    
     return (
         <aside className="flex">
             <nav className="h-screen flex flex-col ml-8 justify-evenly ">
@@ -62,7 +72,7 @@ const SidebarAdmin = () => {
                     <li className='relative flex items-center justify-center h-16 w-16 cursor-pointer group mb-5'>
                         <Link href="/login">
                             <LogOut size={32}
-                                className="relative z-10 hover:text-[#ffffff]" />
+                                className="relative z-10 hover:text-[#ffffff]" onClick={handleLogout} />
                         </Link>
 
                         <div className="absolute inset-0 bg-red-400/90 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>

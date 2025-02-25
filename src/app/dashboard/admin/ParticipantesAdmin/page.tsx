@@ -1,5 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const participants = [
   { name: "Adila", event: "Fiesta 1", payment: "100$", date: "12/01/2025" },
@@ -8,6 +10,16 @@ const participants = [
 ];
 
 function ParticipantesAdmin() {
+  const router = useRouter();
+  
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role'); // Suponiendo que el rol del usuario también se almacena en el localStorage
+
+    if (!token) {
+      router.push('/login');
+    }
+  }, [router]);
   return (
     <>
        <div className="p-4">

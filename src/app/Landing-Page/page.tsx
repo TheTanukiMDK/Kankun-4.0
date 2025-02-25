@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import WhyChoose from '@/components/WhyChose'
 
 const Landingpage = () => {
+    
     return (
         <div className="min-h-screen">
             <Navbar />
