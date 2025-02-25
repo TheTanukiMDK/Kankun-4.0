@@ -127,7 +127,7 @@ function Login() {
                         <p>
                             ¿No tienes una cuenta? <a href="/register" className="text-red-600 font-bold">Regístrate</a>
                             <br />
-                            <a className="text-red-400 font-bold" href='/forgetPassword'>Olvidé mi contraseña</a>
+                           {/* <a className="text-red-400 font-bold" href='/forgetPassword'>Olvidé mi contraseña</a>*/}
                         </p>
                     </div>
                 </div>
