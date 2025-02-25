@@ -1,20 +1,20 @@
 import { ReactNode } from "react";
+import { TitleProvider } from '@/components/titleContext';
 import SidebarAdmin from "@/components/sidebarAdmin";
 import HeaderAdmin from "@/components/headerAdmin";
 
-//Instale: npm install tailwind-scrollbar-hide, lo pongo por si acaso //
-// :) Help me
-const Layout = ({ children }: { children: ReactNode }) => {
-  return <div>
-    <html lang="es" className="overflow-x-hidden">
-      <body className="bg-slate-300/10">
-        <section className="
-        fixed top-0 left-0 w-40 h-full z-[2000] overflow-x-hidden scrollbar-hide
-        ">
-          <SidebarAdmin/>
+const Layout = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
+  return (
+    <TitleProvider>
+      <div className="overflow-x-hidden">
+        <section className="fixed top-0 left-0 w-40 h-full z-[2000] overflow-x-hidden scrollbar-hide">
+          <SidebarAdmin />
         </section>
-        <section className="
-        relative w-full scrollbar-hide ">
+        <section className="relative w-full scrollbar-hide">
           <HeaderAdmin/>
           <div className="flex h-[84vh] w-full mt-10 overflow-auto scrollbar-hide
                 lg:w-[calc(100%-330px)]
@@ -27,15 +27,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
             {children}
           </div>
         </section>
-      </body>
-    </html>
-
-  </div>;
+      </div>
+    </TitleProvider>
+  );
 };
+
 export default Layout;
-
-
-
-
-
-
