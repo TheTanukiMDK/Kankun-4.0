@@ -38,7 +38,7 @@ export function AsistanceCard() {
   return (
     <Card className="bg-transparent border-none shadow-none">
       <CardHeader>
-        <CardTitle className="font-bold text-3xl text-gray-700">Tase de asistencias</CardTitle>
+        <CardTitle className="font-bold text-3xl text-gray-700">Tasa de asistencias</CardTitle>
         <CardDescription>
           Medido diariamente
         </CardDescription>
