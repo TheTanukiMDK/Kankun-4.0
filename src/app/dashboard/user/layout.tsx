@@ -1,8 +1,14 @@
-import { ReactNode } from "react";
+import Sidebar from "@/components/dashboard/user/Sidebar";
 
-// Configuren segun sus necesidades
-const Layout = ({ children }: { children: ReactNode }) => {
-  return <div>{children}</div>;
-};
-
-export default Layout;
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-row h-screen">
+      <Sidebar />
+      {children}
+    </div>
+  );
+}

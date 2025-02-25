@@ -1,4 +1,5 @@
 "use client";
+
 import { 
     BellRing, 
     BookOpenCheck, 
@@ -36,6 +37,7 @@ const SidebarAdmin = () => {
                     <SideButton Icon={BellRing} href="/dashboard/admin/notificaciones" tooltip="Notificaciones" />
                     <SideButton Icon={Settings} href="/dashboard/admin/ajustes" tooltip="Ajustes" />
                 </ul>
+
                 <ul className='bg-white shadow-xl mt-20 border-spacing-y-9 rounded-full p-4 backdrop-blur-xl'>
                     <SideButton Icon={LogOut} href="/login" tooltip="Cerrar sesión" />
                     <li className='relative flex items-center justify-center h-16 w-16 cursor-pointer group'>
@@ -55,6 +57,7 @@ const SidebarAdmin = () => {
         </aside>
     );
 };
+
 const SideButton = ({
     Icon,
     href,

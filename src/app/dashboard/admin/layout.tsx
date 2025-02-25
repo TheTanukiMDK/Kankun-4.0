@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { TitleProvider } from '@/components/titleContext';
 import SidebarAdmin from "@/components/sidebarAdmin";
 import HeaderAdmin from "@/components/headerAdmin";
@@ -5,7 +6,7 @@ import HeaderAdmin from "@/components/headerAdmin";
 const Layout = ({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) => {
   return (
     <TitleProvider>
