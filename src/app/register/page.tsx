@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import { TreePalm } from 'lucide-react';
+import Link from 'next/link';
 
 function Registro() {
     const [formData, setFormData] = useState({
@@ -121,10 +122,13 @@ function Registro() {
         <>
             <header className="w-full fixed top-0 left-0 bg-white flex justify-between p-4 border border-[#B82132]">
                 <h1 className="text-red-600 font-bold text-[30px] ml-10">Registro</h1>
+                <Link href="/">
                 <div className="flex items-center gap-2 mr-10">
                     <TreePalm className="text-red-600 text-[30px]" size="3rem" />
                     <span className="text-red-600 font-bold text-[30px]">Kankun 4.0</span>
                 </div>
+                </Link>
+
             </header>
 
             <div className="flex flex-col items-center justify-center min-h-screen bg-red-100/30 pt-16">
