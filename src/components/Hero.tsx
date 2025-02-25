@@ -2,7 +2,6 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import image from "@/assets/images/japon.jpg"
 import image2 from "@/assets/images/Japoncat.jpg"
 
 const Hero = () => {
@@ -49,10 +48,10 @@ const Hero = () => {
                         Descubre un mundo lleno de eventos inolvidables, la mejor música y experiencias únicas
                     </motion.p>
                     <motion.div variants={itemVariants} className="flex flex-wrap gap-4 justify-center">
-                        <Button size="lg" className="text-lg bg-[#B82132] hover:bg-[#B82132]/90 text-white">
+                        <Button size="lg" className="text-lg" variant="default">
                             Ver eventos
                         </Button>
-                        <Button size="lg" className="text-lg border-white text-grey/100 hover:bg-white/10" variant="outline">
+                        <Button size="lg" className="text-lg border-white text-grey/10 hover:bg-white/10" variant="outline">
                             Saber más
                         </Button>
                     </motion.div>
@@ -63,4 +62,3 @@ const Hero = () => {
 }
 
 export default Hero
-

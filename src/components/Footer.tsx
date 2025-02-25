@@ -6,7 +6,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear()
 
     return (
-        <footer className="bg-[#B82132] text-white py-20">
+        <footer className="bg-primary text-primary-foreground py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     <motion.div
@@ -16,7 +16,9 @@ const Footer = () => {
                         className="col-span-2 md:col-span-1"
                     >
                         <h3 className="text-2xl font-bold mb-4">Kankun 4.0</h3>
-                        <p className="text-[#F6DED8]">Creando experiencias inolvidables para todos nuestros asistentes.</p>
+                        <p className="text-primary-foreground/80">
+                            Creando experiencias inolvidables para todos nuestros asistentes.
+                        </p>
                     </motion.div>
 
                     {["Enlaces Rápidos", "Legal", "Contacto"].map((title, index) => (
@@ -31,7 +33,10 @@ const Footer = () => {
                             <ul className="space-y-2">
                                 {[1, 2, 3].map((item) => (
                                     <li key={item}>
-                                        <Button variant="link" className="text-[#F6DED8] hover:text-white p-0 h-auto">
+                                        <Button 
+                                            variant="link" 
+                                            className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto"
+                                        >
                                             {title} {item}
                                         </Button>
                                     </li>
@@ -45,7 +50,7 @@ const Footer = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="border-t border-[#F6DED8]/30 mt-16 pt-8 text-center text-[#F6DED8]"
+                    className="border-t border-primary-foreground/30 mt-16 pt-8 text-center text-primary-foreground/80"
                 >
                     <p>&copy; {currentYear} Kankun 4.0. Todos los derechos reservados.</p>
                 </motion.div>
@@ -55,4 +60,3 @@ const Footer = () => {
 }
 
 export default Footer
-
