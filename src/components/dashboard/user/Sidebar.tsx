@@ -14,14 +14,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -37,16 +30,8 @@ const Sidebar = () => {
           tooltip="Reservaciones"
         />
         <SideButton
-          Icon={Bell}
-          href="/dashboard/user/notifications"
-          tooltip="Notificaciones"
-        />
-      </Container>
-
-      <Container>
-        <SideButton
           Icon={Settings}
-          href="/dashboard/user/settings"
+          href="/dashboard/user/profile"
           tooltip="Ajustes"
         />
         <SideButton Icon={LogOut} href="/login" tooltip="Cerrar sesión" />
@@ -57,7 +42,7 @@ const Sidebar = () => {
 
 const Container = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="bg-white shadow-lg rounded-full p-3 flex flex-col space-y-4">
+    <div className="bg-popover border-border border-[1px] shadow-lg rounded-full p-3 flex flex-col space-y-4">
       {children}
     </div>
   );
