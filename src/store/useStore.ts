@@ -1,13 +1,17 @@
 import { create } from "zustand";
-// Ejemplo sencillo de Zustand, a partir de esto creen sus propios store segun necesiten en esta carpeta
+
 type State = {
-  username: string;
-  changeUsername: () => void;
-  deleteUsername: () => void;
+  token: string | null;
+  changeToken: () => void;
+  role: string | null;
+  changeRole: () => void;
+  deleteData: () => void;
 };
 
 export const useStore = create<State>((set) => ({
-  username: "NaviVani",
-  changeUsername: () => set((s) => ({ username: s.username })),
-  deleteUsername: () => set({ username: "" }),
+  token: null,
+  changeToken: () => set((s) => ({ token: s.token })),
+  role: null,
+  changeRole: () => set((s) => ({ role: s.role })),
+  deleteData: () => set({ token: null, role: null }),
 }));
