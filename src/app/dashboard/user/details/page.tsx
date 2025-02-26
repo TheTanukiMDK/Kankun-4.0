@@ -3,39 +3,74 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { MapPin, Users } from "lucide-react";
-import image2 from "@/assets/images/fiesta2.jpg"
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import axios from 'axios';
 
-export default function EventCard() {
-    const router = useRouter();
-  
-    useEffect(() => {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        router.push('/login');
-      }
-    }, [router]);
+export default function EventDetails() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id'); // Obtén el parámetro `id` de la URL
+  const [event, setEvent] = useState(null);
+  const [location, setLocation] = useState(null);
+
+  useEffect(() => {
+    if (!id) return; // Asegúrate de que el id esté definido antes de hacer la solicitud
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.push('/login');
+    } else {
+      const fetchEventDetails = async () => {
+        try {
+          console.log(`Fetching event details for ID: ${id}`);
+          const response = await axios.get(`http://127.0.0.1:8000/api/events/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setEvent(response.data.data);
+
+          // Fetch location details
+          const locationResponse = await axios.get(`http://127.0.0.1:8000/api/locations`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          const locationData = locationResponse.data.data.find(loc => loc.id === response.data.data.location_id);
+          setLocation(locationData);
+        } catch (error) {
+          console.error("Error fetching event details:", error);
+        }
+      };
+
+      fetchEventDetails();
+    }
+  }, [id, router]);
+
+  if (!event || !location) {
+    console.log("sin eventos o ubicaciones", event, location);
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="max-w-7xl mx-auto p-2">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Image
-          src={image2}
-          alt="Evento"
+        <img
+          src={event.image}
+          alt={event.name}
           className="rounded-lg w-full object-cover"
         />
         <div>
-          <h2 className="text-2xl font-bold text-[#f28c8c]">Fiesta</h2>
-          <p className="text-gray-600">Inicia el 12/06/2024</p>
-          <p className="text-gray-600">Termina el 15/06/2024</p>
+          <h2 className="text-2xl font-bold text-[#f28c8c]">{event.name}</h2>
+          <p className="text-gray-600">Inicia el {new Date(event.start).toLocaleDateString()}</p>
+          <p className="text-gray-600">Termina el {new Date(event.end).toLocaleDateString()}</p>
           <p className="font-semibold flex items-center gap-2 mt-2">
-            <MapPin className="w-5 h-5 text-gray-500" /> Cancun Q. Roo estado Av. Mexico Km90
+            <MapPin className="w-5 h-5 text-gray-500" /> {location.address}
           </p>
-          <p className="font-semibold text-gray-700 mt-2">+10000 personas</p>
-          <p className="text-3xl font-bold text-gray-900">$32,400</p>
-          <p className="flex items-center gap-2 text-gray-600 mt-2">
-            <Users className="w-5 h-5 text-gray-500" /> Se esperan 200 asistencias
-          </p>
+          <p className="font-semibold text-gray-700 mt-2">{event.capacity} personas</p>
+          <p className="text-3xl font-bold text-gray-900">${event.cost}</p>
+
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -43,7 +78,7 @@ export default function EventCard() {
           <h3 className="text-lg font-bold">Ubicación en mapa</h3>
           <div className="mt-2 border rounded-lg overflow-hidden">
             <iframe
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-86.8475,21.1619,-86.8470,21.1623"
+              src={`https://www.openstreetmap.org/export/embed.html?bbox=&layer=mapnik`}
               className="w-full h-96"
               title="Mapa"
             ></iframe>
@@ -53,7 +88,7 @@ export default function EventCard() {
         <div>
           <h3 className="text-lg font-bold">Listado de actividades</h3>
           <div className="mt-2 border border-[#B82132]/50 rounded-lg p-4 space-y-2">
-            {[
+          {[
               { name: "Apertura", time: "9:30 pm" },
               { name: "Show", time: "9:30 pm" },
               { name: "Cierre", time: "9:30 pm" },

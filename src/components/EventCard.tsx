@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
+import { useRouter } from 'next/navigation';
 interface Event {
   id: number;
   name: string;
@@ -15,6 +15,7 @@ interface Event {
 
 export default function EventCard() {
   const [events, setEvents] = useState<Event[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -58,11 +59,12 @@ export default function EventCard() {
             <p className="text-sm text-gray-700 mt-1">
               {event.description}
             </p>
-            <Link href="/dashboard/user/details">
-              <Button className="mt-3 bg-[#ffb9b9] hover:bg-[#fd6262] text-black">
-                Detalles
-              </Button>
-            </Link>
+            <Button 
+              className="mt-3 bg-[#ffb9b9] hover:bg-[#fd6262] text-black"
+              onClick={() => router.push(`/dashboard/user/details?id=${event.id}`)}
+            >
+              Detalles
+            </Button>
           </CardContent>
         </Card>
       ))}
