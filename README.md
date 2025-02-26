@@ -1,5 +1,4 @@
 # Kankun 4.0
 
-Proyecto de integradora
-
-Estructura general hecha por [NaviVani-dev](https://github.com/NaviVani-dev) :3
+Proyecto de Aplicaciones Web para I4.0
+Echo por Ricardo
